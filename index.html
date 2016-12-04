@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="ToDo">
+<head>
+	<title>To Do Application</title>
+	<!-- <link rel="stylesheet" href="foundation.css"> -->
+	<link rel="stylesheet" href="bootstrap.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="angular.min.js"></script>
+</head>
+<body>
+		<div ng-controller="todoController" class="main">
+			<form name="frm" ng-submit="addToDo()">	 <!-- On pressing Go button => addToDo method 																			will fire -->
+				<center><h1 style="padding-top: 3%;">To Do Application</h1></center>
+				<div class="form-group">				<!-- Adding bootstrap form allignmrnt -->
+						<input type="text" name="newtodo" ng-model="newTodo" required="required" placeholder="Add your items here .." style="margin-left: 5%;" />
+						<button  ng-disabled="frm.$invalid" class = "btn btn-primary"">Go</button><br>				<!-- button will be disabled till something is written on 																text box -->
+				</div>			
+			</form>
+									<!-- clearCompleted method will be fired on clicking this 															button  -->
+			<button ng-click="clearCompleted()"  class = "btn btn-primary" style="margin-left: 80%;"	>Clear Completed</button>
+
+			<ul>	
+				<h4><li ng-repeat="todo in todos">
+					<input type="checkbox" ng-model="todo.done" />
+					<span ng-class="{'done': todo.done}">{{todo.title}}</span><br>	<br>
+				</li></h4>
+			</ul>
+		</div>
+	
+<script src="main.js"></script>
+</body>
+</html>
